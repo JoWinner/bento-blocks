@@ -13,11 +13,11 @@ import {
 const Rosy = () => {
   return (
     <div className="font-rosy-a container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-8 bg-blue-100 lg:min-h-screen text-6xl  rounded-lg">
-      <div className="flex col-span-12 lg:col-span-4 w-full md:col-span-5 ">
-        <div className="grid grid-rows-6 gap-y-8 md:gap-8 w-full ">
-          <div className="row-span-3 w-full flex items-center justify-center ">
-            <div className="bg-purple-400 w-3/5 rounded-t-full h-full flex flex-col justify-between">
-              <div className="flex justify-center w-full">
+      <div className="flex col-span-12 lg:col-span-4  md:col-span-5 justify-center">
+        <div className="grid grid-rows-6 gap-y-8 md:gap-8 ">
+          <div className="row-span-3 flex justify-center ">
+            <div className="bg-purple-400 rounded-t-full flex flex-col justify-between ">
+              <div className="flex justify-center ">
                 <Image
                   as={NextImage}
                   width={90}
@@ -33,45 +33,44 @@ const Rosy = () => {
                 </h1>
               </div>
 
-              <div className="flex flex-col items-center static">
+              <div className="flex flex-col items-center static py-4">
                 <h1 className="text-4xl font-rosy-b">ROSY</h1>
                 <p className="font-normal text-sm">Secret Garden</p>
               </div>
 
-              <div className="bg-purple-900 h-1/2 w-full flex flex-col justify-between">
-                <div className="relative w-full z-40">
-                  <div className="absolute w-full py-4 flex flex-col items-center">
-                    <h1 className=" font-extrabold text-pink-400">$29.9</h1>
-                    <Image
-                      as={NextImage}
-                      width={200}
-                      height={100}
-                      src="/barcode.gif"
-                      alt="barcode"
-                      className="  rounded-none top-3 "
-                    />
-                  </div>
+              <div className="bg-purple-900 flex flex-col px-4  ">
+                <div className=" flex flex-col items-center justify-center gap-y-1">
                   <Image
                     as={NextImage}
                     width={30}
                     height={30}
                     src="/burst-white.svg"
                     alt="burst"
-                    className=" rounded-none left-44 top-[-13px]"
+                    className=" rounded-none left-20 top-[-15px] md:left-20 "
+                  />
+                  <h1 className=" font-extrabold text-pink-400">$29.9</h1>
+                  <Image
+                    as={NextImage}
+                    width={200}
+                    height={100}
+                    src="/barcode.gif"
+                    alt="barcode"
+                    className="  rounded-none "
                   />
                 </div>
+
                 <Image
                   as={NextImage}
                   width={70}
                   height={70}
                   src="/lasso-purple.svg"
                   alt="lasso"
-                  className=" rounded-none top-5 z-0 "
+                  className=" rounded-none top-7 right-5 z-0 "
                 />
               </div>
             </div>
           </div>
-          <div className="row-span-2 w-full flex items-center justify-center">
+          <div className="row-span-2 flex items-center justify-center">
             <Image
               as={NextImage}
               width={200}
@@ -81,18 +80,18 @@ const Rosy = () => {
               className="rounded-full bg-pink-400 w-[180px] h-[180px]"
             />
           </div>
-          <div className="row-span-1 w-full ">
+          <div className="row-span-1 ">
             <h1 className="font-rosy-a font-extrabold text-purple-700">
               B blooms
             </h1>
           </div>
         </div>
       </div>
-      <div className="flex col-span-12 lg:col-span-4 w-full md:col-span-7 ">
+      <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center">
         <div className="grid grid-rows-6 gap-y-8 md:gap-8 w-full">
-          <div className="row-span-3 w-full bg-blue-600 rounded-lg"> 2a</div>
+          <div className="row-span-3 bg-blue-600 rounded-lg "> 2a</div>
 
-          <Card className="row-span-3 w-full pt-14 rounded-lg bg-purple-500">
+          <Card className="row-span-3  pt-14 rounded-lg bg-purple-500">
             <div className="flex flex-col">
               <div className="relative ">
                 <Image
@@ -141,7 +140,7 @@ const Rosy = () => {
           </Card>
         </div>
       </div>
-      <div className=" col-span-12 lg:col-span-4 bg-blue-800 w-full rounded-lg">
+      <div className=" col-span-12 lg:col-span-4 bg-blue-800  rounded-lg">
         3
       </div>
     </div>
