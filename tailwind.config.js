@@ -131,5 +131,21 @@ module.exports = {
     },
   },
   darkMode: ["class"],
-  plugins: [nextui()],
+  plugins: [
+    nextui(),
+    function ({ addComponents, addUtilities }) {
+      addComponents({
+        ".animate-progress": {
+          animation: "progress 15s linear infinite",
+        },
+      });
+
+      addUtilities({
+        "@keyframes progress": {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+      });
+    },
+  ],
 };
