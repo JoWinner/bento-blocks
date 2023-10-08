@@ -1,6 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import NextImage from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal } from "@/providers/Reveal";
+import { motion } from "framer-motion";
 
 import {
   Card,
@@ -12,6 +15,7 @@ import {
   Avatar,
 } from "@nextui-org/react";
 
+const MotionImage = motion(Image);
 const Rosy = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const images = [
@@ -53,7 +57,7 @@ const Rosy = () => {
                   width={90}
                   height={90}
                   src="/lasso-pink.svg"
-                  alt="lasso-pink"
+                  alt="lasso"
                   className=" rounded-none rotate-180"
                 />
               </div>
@@ -102,11 +106,12 @@ const Rosy = () => {
           </div>
           <div className="row-span-2 flex items-center justify-center">
             <Image
+               isZoomed
               as={NextImage}
               width={200}
               height={100}
               src="/rosy-woman01.png"
-              alt="woman"
+              alt="rose woman"
               className="rounded-full bg-pink-400 w-[180px] h-[180px]"
             />
           </div>
@@ -127,7 +132,7 @@ const Rosy = () => {
       </div>
       <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center">
         <div className="grid grid-rows-6 gap-y-8 md:gap-8 w-full">
-          <Card className="row-span-3 rounded-lg ">
+          <Card radius="lg" isPressable shadow="sm" className="row-span-3  ">
             <CardHeader className="absolute z-10 top-1  flex-row  justify-between">
               <Image
                 as={NextImage}
@@ -158,7 +163,7 @@ const Rosy = () => {
             </CardHeader>
             <Image
               removeWrapper
-              alt="Card example background"
+              alt="rose flower"
               className="z-0 w-full h-full object-cover"
               src="/rosy-img03.jpeg"
             />
@@ -181,26 +186,36 @@ const Rosy = () => {
             </CardFooter>
           </Card>
 
-          <Card className="row-span-3  pt-14 rounded-lg bg-purple-500">
+          <Card
+            radius="lg"
+            shadow="sm"
+            className="row-span-3  pt-14 bg-purple-500"
+          >
             <div className="flex flex-col">
               <div className="relative ">
                 <Image
                   as={NextImage}
                   width={60}
                   height={60}
-                  src="/burst.svg"
+                  src="/burst-pink.svg"
                   alt="burst"
                   className="absolute top-[-20px] left-8 "
                 />
               </div>
               <div className="flex flex-col items-center ">
                 <div className="flex flex-col justify-start space-y-2">
-                  <h2 className="">A flower</h2>
-                  <h1 className="font-rosy-b font-bold leading-8">blossoms</h1>
+                  <Reveal>
+                    <h2 className="">A flower</h2>
+                  </Reveal>
+                  
+                    <h1 className="font-rosy-b font-bold leading-8">
+                      blossoms
+                    </h1>
+                 <Reveal>
                   <div className="flex flex-row space-x-2 items-center justify-start">
                     <h2 className="">for its</h2>
                     <Avatar
-                      src="https://i.pravatar.cc/150?u=a04258114e29026702d"
+                      src="/rosy-woman07.jpg"
                       className="w-14 h-14"
                     />
                   </div>
@@ -213,33 +228,40 @@ const Rosy = () => {
                       alt="rose flower"
                     />
                     <h2>own joy</h2>
-                  </div>
+                  </div> </Reveal>
                 </div>
               </div>
             </div>
-            <div className="flex justify-end">
+            <CardFooter className="absolute bottom-0 z-10 justify-end">
               <Image
                 as={NextImage}
                 width={70}
                 height={70}
                 src="/lasso-white.svg"
-                alt="thread"
+                alt="lasso"
                 className="rounded-none"
               />
-            </div>
+            </CardFooter>
           </Card>
         </div>
       </div>
-      <Card className=" col-span-12 lg:col-span-4  rounded-lg">
-        <CardHeader className="absolute z-10 top-1 flex-col items-start">
-          <div className="h-1 w-4/5 relative mb-8">
-            <div className="absolute top-0 left-0 z-30 h-full w-full flex space-x-3">
+      <Card
+        radius="lg"
+        shadow="sm"
+        className="group col-span-12 lg:col-span-4  "
+      >
+        <CardHeader className="absolute z-10 top-1 flex-col items-center">
+          <div className="h-1 w-4/5 relative mb-8 ">
+            <div className="absolute top-0 left-0 z-30 h-full w-full flex   space-x-3 justify-center">
               {images.map((_, index) => (
-                <div
+                <Button
+                  fullWidth="false"
+                  radius="lg"
+                  size="sm"
                   key={index}
                   style={{ width: sliderBarWidth }}
-                  className={`${
-                    activeSlide === index ? "bg-blue-500" : "bg-white/40"
+                  className={`h-1 ${
+                    activeSlide === index ? "bg-purple-500" : "bg-white/40"
                   }`}
                   onClick={() => changeSliderBar(index)}
                 />
@@ -249,16 +271,56 @@ const Rosy = () => {
         </CardHeader>
 
         {images.map((image, index) => (
-          <Image
-            removeWrapper
+          <MotionImage
             key={index}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{
+              opacity: activeSlide === index ? 1 : 0,
+              x: activeSlide === index ? 0 : -100,
+            }}
+            transition={{ duration: 0.2, delay: 0.25, ease: "easeIn" }}
+            removeWrapper
             src={image}
             className={`z-0 h-full w-full object-cover ${
               activeSlide === index ? "" : "hidden"
             }`}
-            alt="Card example background"
+            alt="rose woman"
           />
         ))}
+
+        <CardBody className="absolute bg-purple-900 group-hover:-translate-y-36 transition ease-in-out duration-700">
+          <h1 className="font-rosy-b">Discounts</h1>
+          <p className="text-lg line-clamp-1 ">
+            Hurry to get a discount on a festive bouquet!
+          </p>
+        </CardBody>
+
+        <CardBody className="absolute hidden group-hover:flex items-center group-hover:transition group-hover:delay-700 group-hover:ease-in-out top-48 group-hover:duration-700">
+          <h1 className="font-rosy-b">Discounts</h1>
+          <p className="text-lg -mb-2">Hurry to get a discount on</p>
+          <p className="text-lg ">a festive bouquet!</p>
+        </CardBody>
+
+        <CardFooter className="justify-center absolute  bottom-10  z-10 ">
+          <Image
+            as={NextImage}
+            width={30}
+            height={30}
+            src="/burst-purple.svg"
+            alt="burst"
+            className="z-10 top-[-20px] left-4 "
+          />
+          <Button
+            className="text-base font-bold font-rosy-a text-purple-900 bg-pink-400 z-0"
+            variant="solid"
+            color="default"
+            radius="sm"
+            size="md"
+            endContent={<ArrowUpRight />}
+          >
+            BUY BOUQUET
+          </Button>
+        </CardFooter>
       </Card>
     </div>
   );
