@@ -46,7 +46,7 @@ const Rosy = () => {
   };
 
   return (
-    <div className="font-rosy-a container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-8 bg-blue-100 lg:min-h-screen text-6xl  rounded-lg">
+    <div className="font-rosy-primary container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-8 bg-blue-100 lg:min-h-screen text-6xl  rounded-lg">
       <div className="flex col-span-12 lg:col-span-4  md:col-span-5 justify-center">
         <div className="grid grid-rows-6 gap-y-8 md:gap-8 ">
           <div className="row-span-3 flex justify-center ">
@@ -68,7 +68,7 @@ const Rosy = () => {
               </div>
 
               <div className="flex flex-col items-center static py-4">
-                <h1 className="text-4xl font-rosy-b">ROSY</h1>
+                <h1 className="text-4xl font-rosy-primary">ROSY</h1>
                 <p className="font-normal text-sm">Secret Garden</p>
               </div>
 
@@ -82,7 +82,7 @@ const Rosy = () => {
                     alt="burst"
                     className=" rounded-none left-20 top-[-15px] md:left-20 "
                   />
-                  <h1 className=" font-extrabold text-pink-400">$29.9</h1>
+                  <h1 className="font-font-primary font-extrabold text-pink-400">$29.9</h1>
                   <Image
                     as={NextImage}
                     width={200}
@@ -124,7 +124,7 @@ const Rosy = () => {
               alt="rosy-logo"
               className=" rounded-none"
             />
-            <h1 className="font-rosy-a font-extrabold tracking-tight text-purple-700">
+            <h1 className="font-rosy-primary font-extrabold tracking-tight text-purple-700">
               Blooms
             </h1>
           </div>
@@ -177,7 +177,7 @@ const Rosy = () => {
                   alt="rosy-logo"
                   className=" rounded-none"
                 />
-                <h1 className="font-rosy-a font-extrabold tracking-tight text-5xl text-purple-100">
+                <h1 className="font-rosy-primary font-extrabold tracking-tight text-5xl text-purple-100">
                   Blooms
                 </h1>
               </div>
@@ -208,7 +208,7 @@ const Rosy = () => {
                     <h2 className="">A flower</h2>
                   </Reveal>
                   
-                    <h1 className="font-rosy-b font-bold leading-8">
+                    <h1 className="font-rosy-primary font-bold leading-8">
                       blossoms
                     </h1>
                  <Reveal>
@@ -289,14 +289,14 @@ const Rosy = () => {
         ))}
 
         <CardBody className="absolute bg-purple-900 group-hover:-translate-y-36 transition ease-in-out duration-700">
-          <h1 className="font-rosy-b">Discounts</h1>
+          <h1 className="font-rosy-primary">Discounts</h1>
           <p className="text-lg line-clamp-1 ">
             Hurry to get a discount on a festive bouquet!
           </p>
         </CardBody>
 
         <CardBody className="absolute hidden group-hover:flex items-center group-hover:transition group-hover:delay-700 group-hover:ease-in-out top-48 group-hover:duration-700">
-          <h1 className="font-rosy-b">Discounts</h1>
+          <h1 className="font-rosy-primary">Discounts</h1>
           <p className="text-lg -mb-2">Hurry to get a discount on</p>
           <p className="text-lg ">a festive bouquet!</p>
         </CardBody>
@@ -311,7 +311,7 @@ const Rosy = () => {
             className="z-10 top-[-20px] left-4 "
           />
           <Button
-            className="text-base font-bold font-rosy-a text-purple-900 bg-pink-400 z-0"
+            className="text-base font-bold font-rosy-primary text-purple-900 bg-pink-400 z-0"
             variant="solid"
             color="default"
             radius="sm"

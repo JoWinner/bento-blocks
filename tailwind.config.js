@@ -12,8 +12,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "rosy-a": "Fondamento",
-        "rosy-b": "Redressed",
+         "font-primary":"var(--font-urbanist)",
+        "rosy-primary": "var(--font-fondamento)",
+        "rosy-secondary": "var(--font-redressed)",
+        "miuzzic-primary":"var(--font-unbounded)",
+
         // "rosy-a1": 'Playfair Display',
         // "rosy-b": 'Mulish',
       },
