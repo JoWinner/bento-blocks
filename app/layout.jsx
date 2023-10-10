@@ -43,8 +43,8 @@ const redressed = Redressed({
 });
 
 export const metadata = {
-  title: "Landing Page",
-  description: "Ultra classy landing page",
+  title: "Bento Blocks",
+  description: "Ultra classy bentos",
 };
 
 export default function RootLayout({ children }) {
