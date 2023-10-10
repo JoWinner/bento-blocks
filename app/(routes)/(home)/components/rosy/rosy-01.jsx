@@ -46,7 +46,7 @@ const Rosy = () => {
   };
 
   return (
-    <div className="font-rosy-primary container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-8 bg-blue-100 lg:min-h-screen text-6xl  rounded-lg">
+    <div className="font-rosy-primary container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-8 bg-blue-100 lg:min-h-screen text-6xl  rounded-lg text-white">
       <div className="flex col-span-12 lg:col-span-4  md:col-span-5 justify-center">
         <div className="grid grid-rows-6 gap-y-8 md:gap-8 ">
           <div className="row-span-3 flex justify-center ">
@@ -73,7 +73,7 @@ const Rosy = () => {
               </div>
 
               <div className="bg-purple-900 flex flex-col px-4  ">
-                <div className=" flex flex-col items-center justify-center gap-y-1">
+                <div className=" flex flex-col items-center justify-center">
                   <Image
                     as={NextImage}
                     width={30}
@@ -82,7 +82,8 @@ const Rosy = () => {
                     alt="burst"
                     className=" rounded-none left-20 top-[-15px] md:left-20 "
                   />
-                  <h1 className="font-font-primary font-extrabold text-pink-400">$29.9</h1>
+                  <div className=" space-y-3 flex flex-col items-center">
+                  <h1 className="font-playfair-font font-extrabold text-pink-400">$29.9</h1>
                   <Image
                     as={NextImage}
                     width={200}
@@ -90,7 +91,7 @@ const Rosy = () => {
                     src="/barcode.gif"
                     alt="barcode"
                     className="  rounded-none "
-                  />
+                  /></div>
                 </div>
 
                 <Image
@@ -132,7 +133,7 @@ const Rosy = () => {
       </div>
       <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center">
         <div className="grid grid-rows-6 gap-y-8 md:gap-8 w-full">
-          <Card radius="lg" isPressable shadow="sm" className="row-span-3  ">
+          <Card radius="lg" isPressable shadow="sm" className="row-span-3 text-white ">
             <CardHeader className="absolute z-10 top-1  flex-row  justify-between">
               <Image
                 as={NextImage}
@@ -189,7 +190,7 @@ const Rosy = () => {
           <Card
             radius="lg"
             shadow="sm"
-            className="row-span-3  pt-14 bg-purple-500"
+            className="row-span-3  pt-14 bg-purple-500 text-white"
           >
             <div className="flex flex-col">
               <div className="relative ">
@@ -248,7 +249,7 @@ const Rosy = () => {
       <Card
         radius="lg"
         shadow="sm"
-        className="group col-span-12 lg:col-span-4  "
+        className="group col-span-12 lg:col-span-4 bg-purple-900 text-white"
       >
         <CardHeader className="absolute z-10 top-1 flex-col items-center">
           <div className="h-1 w-4/5 relative mb-8 ">

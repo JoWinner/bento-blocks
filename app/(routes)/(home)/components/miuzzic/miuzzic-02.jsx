@@ -1,10 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import NextImage from "next/image";
-import  Link  from "next/link";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import {
+  Heart,
+  Repeat1,
+  SkipBack,
+  PauseCircle,
+  SkipForward,
+  Shuffle,
+  ArrowDownRightFromCircle,
+  Mail,
+  Lock,
+} from "lucide-react";
 import { Reveal } from "@/providers/Reveal";
 
 import {
@@ -16,58 +26,60 @@ import {
   Button,
   Avatar,
   AvatarGroup,
+  Progress,
+  Checkbox,
+  Input,
 } from "@nextui-org/react";
+import DropDownProp from "@/components/dropdown";
+import ModalProp from "@/components/modal";
 
-const MotionImage = motion(Image);
 const Miuzzic = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const images = [
-    "/rosy-woman02.jpeg",
-    "/rosy-woman03.jpeg",
-    "/rosy-woman04.jpeg",
-    "/rosy-woman05.jpeg",
-    "/rosy-woman06.jpeg",
-  ];
-
-  useEffect(() => {
-    const slideShow = () => {
-      setActiveSlide((prevSlide) => (prevSlide + 1) % images.length);
-    };
-
-    const slideShowInterval = setInterval(slideShow, 3000);
-
-    return () => {
-      clearInterval(slideShowInterval);
-    };
-  });
-
-  const changeSliderBar = (index) => {
-    setActiveSlide(index);
-    console.log("Image number", index);
-  };
+  const [liked, setLiked] = useState(false);
 
   return (
     <div className="font-miuzzic-primary text-black-600 container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-16 bg-zinc-400 lg:min-h-screen text-3xl  rounded-lg">
-      <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center b w-full">
+      <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center ">
         <div className="grid grid-rows-6 gap-y-8 place-content-center md:gap-8  ">
           <Card
             radius="lg"
-            isPressable
             shadow="sm"
-            className="row-span-3   h-[400px] bg-gradient-to-r from-rose-100 to-teal-100 w-[360px]"
+            className="row-span-3 text-black-400  h-[400px] bg-gradient-to-r from-rose-100 to-teal-100 w-[360px] items center justify-center"
           >
-            <CardHeader className="absolute z-10 top-1  flex-row  justify-between"></CardHeader>
+            <CardBody className="flex flex-col items-center overflow-hidden ">
+              <Image
+                as={NextImage}
+                width={250}
+                height={400}
+                src="/miuzzic-img05.png"
+                alt="miuzzic"
+                className=" rounded-none  z-0"
+              />
+              <div className="absolute bottom-0 z-10 flex flex-col items-center justify-center py-10 px-20 space-y-10 ">
+                <h1 className="text-center	">New Music Genres</h1>
+                <p className="text-sm font-normal text-center	">
+                  You can how create music in an even wider variety of musical
+                  styles.
+                </p>
+                <DropDownProp
+                  items={["Pop Music", "Hip hop", "Country", "Lofi"]}
+                  onAction={(key) => alert(key)}
+                  trigger={
+                    <div className="bg-black-100 rounded-full flex flex-row py-2 px-3 space-x-1 cursor-pointer">
+                      <ArrowDownRightFromCircle color="#ffffff" />
 
-            <CardFooter className="absolute  bottom-0 z-10 flex flex-col items-center justify-center py-10">
-              <div className="flex flex-row items-center">
-                <h1 className=" font-extrabold text-5xl ">Blooms</h1>
+                      <h1 className="text-white text-lg">More Genres</h1>
+                    </div>
+                  }
+                />
               </div>
-
-              <p className="text-base  pl-7">the freshest flowers for you</p>
-            </CardFooter>
+            </CardBody>
           </Card>
 
-          <Card radius="lg" shadow="sm" className="row-span-3  h-[400px] ">
+          <Card
+            radius="lg"
+            shadow="sm"
+            className="row-span-3  h-[400px] w-[360px]"
+          >
             <Image
               removeWrapper
               alt="rose flower"
@@ -84,26 +96,80 @@ const Miuzzic = () => {
                   alt="miuzzic-logo"
                   className=" rounded-full  p-0 bg-white"
                 />
-                <h1 className=" font-extrabold text-4xl ">ACCESS</h1>
+                <ModalProp
+                  modalTitle="Login"
+                  modalTrigger={(handleOpen) => (
+                    <h1
+                      onClick={handleOpen}
+                      className="text-white font-extrabold text-4xl cursor-pointer"
+                    >
+                      ACCESS
+                    </h1>
+                  )}
+                  modalSize="lg"
+                  modalPlacement="auto"
+                  modalActions={(onClose) => (
+                    <>
+                      <Button color="danger" variant="light" onPress={onClose}>
+                        Close
+                      </Button>
+                      <Button className="bg-zinc-600 text-white" onPress={() => {}}>
+                        Continue
+                      </Button>
+                    </>
+                  )}
+                >
+                  <Input
+                    
+                    endContent={
+                      <Mail className="text-2xl text-zinc-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Email"
+                    placeholder="Enter your email"
+                    variant="bordered"
+                  />
+                  <Input
+                    
+                    endContent={
+                      <Lock className="text-2xl text-zinc-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Password"
+                    placeholder="Enter your password"
+                    type="password"
+                    variant="bordered"
+                  />
+                  <div className="flex py-2 px-1 justify-between">
+                    <Checkbox
+                      classNames={{
+                        label: "text-small",
+                      }}
+                    >
+                      Remember me
+                    </Checkbox>
+                    <Link color="primary" href="#" size="sm">
+                      Forgot password?
+                    </Link>
+                  </div>
+                </ModalProp>
               </div>
             </CardFooter>
           </Card>
         </div>
       </div>
 
-      <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center w-full">
-        <div className="grid grid-rows-4 gap-y-8 place-content-center md:gap-8 w-full">
+      <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center ">
+        <div className="grid grid-rows-4 gap-y-8 place-content-center md:gap-8 ">
           <Card
             radius="lg"
             isPressable
             shadow="sm"
-            className="row-span-2 text-black-600 w-[360px] 
-            h-[400px] bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-blue-50 via-indigo-100 to-zinc-100"
+            className="row-span-2 text-black-600  
+            h-[400px] bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-blue-50 via-indigo-100 to-zinc-100 w-[360px]"
           >
             <CardHeader className="absolute z-10 top-1  flex-col  justify-center pt-4">
-              <p>Get ready for </p>
-              <p>something entirely</p>
-              <p>new!</p>
+              <p className="text-center">
+                Get ready for something entirely new!
+              </p>
             </CardHeader>
 
             <CardFooter className="absolute bottom-0 z-10 flex flex-col items-center justify-center space-y-6 px-4">
@@ -128,7 +194,7 @@ const Miuzzic = () => {
                   src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
                 />
               </AvatarGroup>
-              <p className="text-lg font-normal">
+              <p className="text-lg font-normal text-center">
                 Over 1,000 musicians have already used our AI generator to
                 create their tracks.
               </p>
@@ -140,7 +206,7 @@ const Miuzzic = () => {
               <Card
                 radius="lg"
                 shadow="sm"
-                className=" h-full bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-teal-100 to-zinc-300"
+                className=" h-full bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-teal-100 to-zinc-300 w-[360px]"
               >
                 <CardBody className="flex-row items-center justify-center">
                   <Image
@@ -159,17 +225,14 @@ const Miuzzic = () => {
               <Card
                 radius="lg"
                 shadow="sm"
-                className="h-full  pt-4 bg-gradient-to-tl from-pink-300 via-slate-100 to-blue-50 text-black-600"
+                className="h-full  pt-4 bg-gradient-to-tl from-pink-300 via-slate-100 to-blue-50 text-black-600 w-[360px]"
               >
                 <CardHeader className="absolute z-10 top-1 flex-col items-start text-lg font-normal">
-                  <p >
-                   Intuitive interface 
-                  </p>
+                  <p>Intuitive interface</p>
                   <p>& improved quality</p>
-                  
                 </CardHeader>
                 <CardBody className="absolute items-end top-1">
-                <Image
+                  <Image
                     as={NextImage}
                     width={150}
                     height={150}
@@ -177,12 +240,12 @@ const Miuzzic = () => {
                     alt="miuzzic"
                     className=" rounded-none z-50"
                   />
-</CardBody>
+                </CardBody>
 
                 <CardFooter className="absolute bottom-0 z-10 justify-start">
                   <div>
                     <Link href="#">
-                    <p className="text-black text-tiny">miuzz.ic</p>
+                      <p className="text-black text-tiny">miuzz.ic</p>
                     </Link>
                   </div>
                 </CardFooter>
@@ -198,110 +261,153 @@ const Miuzzic = () => {
             radius="lg"
             isPressable
             shadow="sm"
-            className="row-span-3   h-[400px] "
+            className="row-span-3 h-[400px] w-[360px] bg-[conic-gradient(var(--tw-gradient-stops))] from-rose-200 via-sky-100 to-rose-200"
           >
             <CardHeader className="absolute z-10 top-1  flex-row  justify-between">
-              <Image
-                as={NextImage}
-                width={100}
-                height={100}
-                src="/lasso-white.svg"
-                alt="lasso"
-                className=" rounded-none bottom-6 rotate-45"
-              />
-              <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900/40 via-purple-900/70 to-slate-900 rounded-full relative">
-                <Image
-                  as={NextImage}
-                  width={100}
-                  height={100}
-                  src="/curved-text.png"
-                  alt="curved-text"
-                  className=" rounded-none"
-                />
-                <Image
-                  as={NextImage}
-                  width={40}
-                  height={40}
-                  src="/sparkle-pink.svg"
-                  alt="sparkle"
-                  className=" rounded-none absolute bottom-7 left-7"
-                />
-              </div>
-            </CardHeader>
-            <Image
-              removeWrapper
-              alt="rose flower"
-              className="z-0 w-full h-full object-cover"
-              src="/rosy-img03.jpeg"
-            />
-            <CardFooter className="absolute  bottom-0 z-10 flex flex-col items-center justify-center py-10">
-              <div className="flex flex-row items-center">
-                <Image
-                  as={NextImage}
-                  width={70}
-                  height={70}
-                  src="/miuzzic-logo.png"
-                  alt="miuzzic-logo"
-                  className=" rounded-none"
-                />
-                <h1 className=" font-extrabold text-5xl ">Blooms</h1>
+              <div className="flex flex-col text-base text-black-600 items-start">
+                <p>Mystery sounds of</p>
+                <p>spring right in your ears</p>
+                <p>Even in winter</p>
               </div>
 
-              <p className="text-base  pl-7">the freshest flowers for you</p>
+              <Image
+                as={NextImage}
+                width={70}
+                height={70}
+                src="/miuzzic-logo.png"
+                alt="miuzzic-logo"
+                className=" rounded-none"
+              />
+            </CardHeader>
+
+            <CardFooter className="absolute  bottom-0 z-10 flex flex-col items-center justify-center py-10">
+              <Image
+                as={NextImage}
+                width={500}
+                height={500}
+                src="/miuzzic-img04.png"
+                alt="miuzzic"
+                className=" rounded-none"
+              />
             </CardFooter>
           </Card>
 
           <Card
             radius="lg"
             shadow="sm"
-            className="row-span-3   h-[400px]  pt-4 bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-teal-100 to-zinc-300"
+            className="row-span-3 h-[400px] bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-teal-100 to-zinc-300 text-black-800 w-[360px]"
           >
-            <div className="flex flex-col">
-              <div className="relative ">
-                <Image
-                  as={NextImage}
-                  width={60}
-                  height={60}
-                  src="/burst-pink.svg"
-                  alt="burst"
-                  className="absolute top-[-20px] left-8 "
-                />
-              </div>
-              <div className="flex flex-col items-center ">
-                <div className="flex flex-col justify-start space-y-2">
-                  <Reveal>
-                    <h2 className="">A flower</h2>
-                  </Reveal>
+            <CardBody className="bg-gradient-to-r from-rose-100 to-teal-100 absolute top-1 border-2 border-white rounded-lg shadow-md p-2">
+              <div className="grid grid-cols-12 gap-6 md:gap-4 items-center justify-center">
+                <div className="relative col-span-4">
+                  <Image
+                    alt="Album cover"
+                    className="object-cover"
+                    height={200}
+                    shadow="md"
+                    src="/miuzzic-img03.png"
+                    width="100%"
+                  />
+                </div>
 
-                  <h1 className=" font-bold">blossoms</h1>
-                  <Reveal>
-                    <div className="flex flex-row space-x-2 items-center justify-start">
-                      <h2 className="">for its</h2>
-                      <Avatar src="/rosy-woman07.jpg" className="w-14 h-14" />
+                <div className="flex flex-col col-span-8">
+                  <div className="flex justify-between items-start">
+                    <div className="flex flex-col gap-0 ">
+                      <h3 className="font-semibold ">Lofi Mix</h3>
+                      <p className="text-small text-zinc-600">New Playlist</p>
+                      <h1 className="text-large font-medium mt-2 text-zinc-600">
+                        Odelia Cools
+                      </h1>
                     </div>
-                    <div className="flex flex-row justify-start">
-                      <Image
-                        as={NextImage}
-                        width={70}
-                        height={70}
-                        src="/rosy-img01.png"
-                        alt="rose flower"
+                    <Button
+                      isIconOnly
+                      className="text-pink-500/70 data-[hover]:bg-black-100/40 -translate-y-2 translate-x-2"
+                      radius="full"
+                      variant="light"
+                      onPress={() => setLiked((v) => !v)}
+                    >
+                      <Heart
+                        color="#3F3F46"
+                        className={liked ? "[&>path]:stroke-transparent" : ""}
+                        fill={liked ? "currentColor" : "none"}
                       />
-                      <h2>own joy</h2>
+                    </Button>
+                  </div>
+
+                  <div className="flex flex-col mt-3 gap-1">
+                    <Progress
+                      aria-label="Music progress"
+                      classNames={{
+                        indicator: "bg-zinc-800",
+                        track: "bg-zinc-500/30",
+                      }}
+                      color="default"
+                      size="sm"
+                      value={33}
+                    />
+                    <div className="flex justify-between text-zinc-600">
+                      <p className="text-small">3:52</p>
+                      <p className="text-small">4:32</p>
                     </div>
-                  </Reveal>
+                  </div>
+
+                  <div className="flex w-full items-center justify-center">
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-black-100/40"
+                      radius="full"
+                      variant="light"
+                    >
+                      <Repeat1 color="#3F3F46" />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-black-100/40"
+                      radius="full"
+                      variant="light"
+                    >
+                      <SkipBack color="#3F3F46" />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="w-auto h-auto data-[hover]:bg-pink-200"
+                      radius="full"
+                      variant="light"
+                    >
+                      <PauseCircle size={50} color="#3F3F46" />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-black-100/40"
+                      radius="full"
+                      variant="light"
+                    >
+                      <SkipForward color="#3F3F46" />
+                    </Button>
+                    <Button
+                      isIconOnly
+                      className="data-[hover]:bg-black-100/40"
+                      radius="full"
+                      variant="light"
+                    >
+                      <Shuffle color="#3F3F46" />
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <CardFooter className="absolute bottom-0 z-10 justify-end">
+            </CardBody>
+            <CardFooter className="absolute  bottom-0  flex flex-col items-center justify-center py-4">
               <Image
                 as={NextImage}
-                width={70}
-                height={70}
-                src="/lasso-white.svg"
-                alt="lasso"
-                className="rounded-none"
+                width={30}
+                height={30}
+                src="/miuzzic-logo.png"
+                alt="miuzzic-logo"
+                className=" rounded-none"
               />
+              <p className="text-center">
+                Sound of future AI Powered music generator
+              </p>
             </CardFooter>
           </Card>
         </div>

@@ -29,7 +29,7 @@ export default function ModalProp({
         onClose={onClose}
         isDismissable={true}
         scrollBehavior="normal"
-      >
+      className="bg-black-400">
         <ModalContent>
           <ModalHeader className="flex flex-col gap-1">
             {modalTitle}

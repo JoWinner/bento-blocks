@@ -12,13 +12,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-         "font-primary":"var(--font-urbanist)",
+         "primary-font":"var(--font-urbanist)",
         "rosy-primary": "var(--font-fondamento)",
         "rosy-secondary": "var(--font-redressed)",
         "miuzzic-primary":"var(--font-unbounded)",
-
-        // "rosy-a1": 'Playfair Display',
-        // "rosy-b": 'Mulish',
+        "playfair-font": "var(--font-playfair)",
+        "mulish-font": "var(--font-mulish)",
       },
       colors: {
         white: "#FFFFFF",

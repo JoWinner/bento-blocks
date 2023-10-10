@@ -33,7 +33,7 @@ export default function Header() {
       disableAnimation={false}
       isBordered={false}
       isBlurred={true}
-     shouldHideOnScroll
+     shouldHideOnScroll className="bg-black-700"
     >
       {/* Content shows on smaller screens and hides on larger screens */}
       <NavbarContent className="sm:hidden pr-3" justify="start">
