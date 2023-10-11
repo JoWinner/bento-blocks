@@ -1,7 +1,7 @@
 "use client";
 
-import Miuzzic from "./components/miuzzic/miuzzic-02";
-import Rosy from "./components/rosy/rosy-01";
+import Miuzzic from "./components/miuzzic-01/miuzzic-01";
+import Rosy from "./components/rosy-01/rosy-01";
 
 const HomePage = () => {
   return (

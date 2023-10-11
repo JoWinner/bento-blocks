@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 
 import NextImage from "next/image";
@@ -37,7 +38,7 @@ const Miuzzic = () => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <div className="font-miuzzic-primary text-black-600 container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-16 bg-zinc-400 lg:min-h-screen text-3xl  rounded-lg">
+    <div className="font-miuzzic-primary text-black-400 container mx-auto grid grid-cols-12 flex-col lg:flex-row gap-y-8 md:gap-8 p-16 bg-zinc-400 lg:min-h-screen text-3xl  rounded-lg">
       <div className="flex col-span-12 lg:col-span-4  md:col-span-7 justify-center ">
         <div className="grid grid-rows-6 gap-y-8 place-content-center md:gap-8  ">
           <Card
@@ -163,7 +164,7 @@ const Miuzzic = () => {
             radius="lg"
             isPressable
             shadow="sm"
-            className="row-span-2 text-black-600  
+            className="row-span-2 text-black-400  
             h-[400px] bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-blue-50 via-indigo-100 to-zinc-100 w-[360px]"
           >
             <CardHeader className="absolute z-10 top-1  flex-col  justify-center pt-4">
@@ -217,7 +218,7 @@ const Miuzzic = () => {
                     alt="miuzzic-logo"
                     className=" rounded-none"
                   />
-                  <h1 className="text-5xl text-black-600">miuzz.ic</h1>
+                  <h1 className="text-5xl text-black-400">miuzz.ic</h1>
                 </CardBody>
               </Card>
             </div>
@@ -225,7 +226,7 @@ const Miuzzic = () => {
               <Card
                 radius="lg"
                 shadow="sm"
-                className="h-full  pt-4 bg-gradient-to-tl from-pink-300 via-slate-100 to-blue-50 text-black-600 w-[360px]"
+                className="h-full  pt-4 bg-gradient-to-tl from-pink-300 via-slate-100 to-blue-50 text-black-400 w-[360px]"
               >
                 <CardHeader className="absolute z-10 top-1 flex-col items-start text-lg font-normal">
                   <p>Intuitive interface</p>
@@ -264,7 +265,7 @@ const Miuzzic = () => {
             className="row-span-3 h-[400px] w-[360px] bg-[conic-gradient(var(--tw-gradient-stops))] from-rose-200 via-sky-100 to-rose-200"
           >
             <CardHeader className="absolute z-10 top-1  flex-row  justify-between">
-              <div className="flex flex-col text-base text-black-600 items-start">
+              <div className="flex flex-col text-base text-black-400 items-start">
                 <p>Mystery sounds of</p>
                 <p>spring right in your ears</p>
                 <p>Even in winter</p>
@@ -295,18 +296,19 @@ const Miuzzic = () => {
           <Card
             radius="lg"
             shadow="sm"
-            className="row-span-3 h-[400px] bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-teal-100 to-zinc-300 text-black-800 w-[360px]"
+            className="row-span-3 h-[400px] bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-slate-100 via-teal-100 to-zinc-300 text-black-400 w-[360px]"
           >
             <CardBody className="bg-gradient-to-r from-rose-100 to-teal-100 absolute top-1 border-2 border-white rounded-lg shadow-md p-2">
               <div className="grid grid-cols-12 gap-6 md:gap-4 items-center justify-center">
                 <div className="relative col-span-4">
                   <Image
+                    as={NextImage}
                     alt="Album cover"
                     className="object-cover"
                     height={200}
+                    width={100}
                     shadow="md"
                     src="/miuzzic-img03.png"
-                    width="100%"
                   />
                 </div>
 
